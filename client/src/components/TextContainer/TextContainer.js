@@ -1,33 +1,34 @@
 import React from 'react'
+import onlineIcon from '../../icons/onlineIcon.png'
 
 const TextContainer = ({ users }) => {
-    console.log('users are', users);
-    let disp_users = []
-    users.map(user => user.map(us => disp_users.push(us)));
 
-    disp_users.map(user => console.log(user.id));
     return(
         <div className="textContainer">
+            <div>
+                <h1>Realtime Chat Application <span role="img" aria-label="emoji">💬</span></h1>
+                <h2>Created with React, Express, Node and Socket.IO <span role="img" aria-label="emoji">❤️</span></h2>
+                <h2>Try it out right now! <span role="img" aria-label="emoji">⬅️</span></h2>
+            </div>
             {
-                disp_users
+                users
                     ? (
-                    <div>
-                        <h1>People currently chatting:</h1>
-                        <div className="activeContainer">
-                            <h2>
-                                {disp_users.map(ele => (
-                                    <div key={ele.id} className="activeItem">
-                                        {ele.name}
-                                    </div>
+                        <div>
+                            <h1>People currently chatting:</h1>
+                            <div className="activeContainer">
+                                <h2>
+                                {users.map(({name}) => (
+                                <div key={name} className="activeItem">
+                                    {name}
+                                    <img alt="Online Icon" src={onlineIcon}/>
+                                </div>
                                 ))}
-                            </h2>
+                                </h2>
+                            </div>
                         </div>
-                    </div>
                     )
                     : null
-                }
-            {/* {disp_users.map((user, i) => <div key = {i}>{user.name} <br /></div>)} */}
-
+            }
         </div>
     )
 }
