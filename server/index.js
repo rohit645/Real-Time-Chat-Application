@@ -1,6 +1,7 @@
 const express = require('express');
 const socketIO = require('socket.io');
 const http = require('http');
+const cors = require('cors');
 
 const PORT = process.env.PORT || 5000;
 const router = require('./router');
@@ -44,5 +45,6 @@ io.on('connect', (socket) => {
 });
 
 app.use(router);
+app.use(cors());
 
 server.listen(PORT, () => console.log(`server is listening at port ${PORT}`));
